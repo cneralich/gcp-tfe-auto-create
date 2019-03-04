@@ -89,3 +89,10 @@ resource "tfe_variable" "env_vars" {
   category     = "env"
   workspace_id = "${element(tfe_workspace.main.*.id, count.index)}"
 }
+
+resource "tfe_team_access" "teams" {
+  count        = "${length(var.projects)}"
+  access       = "write"
+  team_id      = "${element(var.team_ids, count.index)}"
+  workspace_id = "${element(tfe_workspace.main.*.id, count.index)}"
+}
