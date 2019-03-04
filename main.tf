@@ -66,7 +66,7 @@ resource "tfe_workspace" "main" {
 resource "tfe_variable" "tfvars_sensitive" {
   count = "${length(var.projects)}"
   key          = "gcp_credentials"
-  value        = "${file("credentials.json")}"
+  value        = "${var.gcp_credentials}"
   category     = "terraform"
   sensitive    = true
   workspace_id = "${element(tfe_workspace.main.*.id, count.index)}"
