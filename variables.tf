@@ -21,3 +21,5 @@ variable "directory" {
     type = "list"
     default = []
 }
+
+variable "gcp_credentials" {}
