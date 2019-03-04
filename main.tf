@@ -82,6 +82,14 @@ resource "tfe_variable" "tfvars" {
   workspace_id = "${element(tfe_workspace.main.*.id, count.index)}"
 }
 
+resource "tfe_variable" "machines" {
+  count = "${length(var.projects)}"
+  key          = "machine_type"
+  value        = "n1-standard-2"
+  category     = "terraform"
+  workspace_id = "${element(tfe_workspace.main.*.id, count.index)}"
+}
+
 resource "tfe_variable" "env_vars" {
   count        = "${length(var.projects)}"
   key          = "CONFIRM_DESTROY"
