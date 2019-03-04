@@ -1,5 +1,6 @@
 provider "google" {
   credentials = "${var.gcp_credentials}"
+}
 
 resource "google_project" "new_project" {
   count = "${length(var.projects)}"
