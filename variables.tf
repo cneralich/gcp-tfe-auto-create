@@ -1,5 +1,3 @@
-variable "name" {}
-
 variable "token" {}
 
 variable "oauth_token_id" {}
