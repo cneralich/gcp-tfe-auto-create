@@ -23,3 +23,8 @@ variable "directory" {
 }
 
 variable "gcp_credentials" {}
+
+variable "team_ids" {
+  type = "list"
+  default = []
+}
