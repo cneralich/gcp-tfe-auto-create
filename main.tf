@@ -14,15 +14,8 @@ resource "google_service_account" "project_admin" {
   count = "${length(var.projects)}"
   account_id   = "project-admin"
   display_name = "Project Admin"
-  #project = "${google_project.new_project.number}"
   project = "${element(google_project.new_project.*.project_id, count.index)}"
 }
-
-/*resource "google_service_account_key" "mykey" {
-  project = "${google_project.new_project.project_id}"
-  count = "${length(var.projects)}"
-  service_account_id = "${google_service_account.project_admin.name}"
-}*/
 
 resource "google_project_iam_member" "project" {
   count = "${length(var.projects)}"
